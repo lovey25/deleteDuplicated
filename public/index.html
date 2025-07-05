@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>중복 파일 관리자</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>중복 파일 관리자</h1>
+    <div id="app">
+      <!-- 폴더 입력 섹션 -->
+      <div class="input-section">
+        <h2>1단계: 기준 폴더 선택</h2>
+        <div class="folder-input">
+          <input
+            type="text"
+            id="baseFolder"
+            placeholder="기준 폴더 경로를 입력하거나 '폴더 선택' 버튼을 클릭하세요"
+          />
+          <button id="selectBaseBtn" class="select-btn">폴더 선택</button>
+          <button id="scanBaseBtn">기준 폴더 스캔</button>
+        </div>
+
+        <h2>2단계: 비교 폴더 선택</h2>
+        <div class="folder-input">
+          <input
+            type="text"
+            id="compareFolder"
+            placeholder="비교 폴더 경로를 입력하거나 '폴더 선택' 버튼을 클릭하세요"
+            disabled
+          />
+          <button id="selectCompareBtn" class="select-btn" disabled>
+            폴더 선택
+          </button>
+          <button id="scanCompareBtn" disabled>비교 폴더 스캔</button>
+        </div>
+      </div>
+
+      <!-- 진행상황 표시 섹션 -->
+      <div class="progress-section" style="display: none">
+        <h3>스캔 진행상황</h3>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <p id="progressText">스캔 준비 중...</p>
+        <p id="currentPath">현재 폴더: -</p>
+        <p id="fileCount">발견된 파일: 0개</p>
+      </div>
+
+      <!-- 결과 표시 섹션 -->
+      <div class="results-section" style="display: none">
+        <h3>중복 파일 목록</h3>
+        <div id="duplicateList"></div>
+        <button id="deleteBtn" style="display: none">중복 파일 삭제</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
